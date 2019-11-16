@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 import user from './modules/user'
 import menu from './modules/menu'
+import datar from './modules/datar'
 
 const store = new Vuex.Store({
   state: {
@@ -24,7 +25,8 @@ const store = new Vuex.Store({
   },
   modules: {
     user,
-    menu
+    menu,
+    datar
   }
 })
 

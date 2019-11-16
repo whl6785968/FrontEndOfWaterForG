@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage" style="height: 1500px;">
+  <div class="homepage" >
     <div class="info_card">
       <el-row :gutter="35" style="margin-left: -20px;margin-right: -20px;">
         <el-col :span="6" :xs="12" :sm="12" :lg="6">
@@ -259,5 +259,12 @@
     padding: 0px;
     transition: all .38s ease-out;
     border-radius: 6px;
+  }
+  
+  .homepage{
+    position: relative;
+    height: 1500px;
+    width:100%;
+    background-color: #f0f2f5;
   }
 </style>

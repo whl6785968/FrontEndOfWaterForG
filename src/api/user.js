@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function initMenu(userid){
   return request({
-    url: '/user/getMenuList',
+    url: '/user/basic/getMenuList',
     method: 'get',
     params: { userid }
   })
@@ -25,14 +25,14 @@ export function login(data){
 
 export function getUserRole(){
   return request({
-    url: '/user/getAllRole',
+    url: '/sys/user/getAllRole',
     method: 'get'
   })
 }
 
 export function getRoleByUserId(user_id){
   return request({
-    url: '/user/getRoleByUserId',
+    url: '/sys/user/getRoleByUserId',
     method: 'get',
     params: { user_id }
   })
@@ -40,7 +40,7 @@ export function getRoleByUserId(user_id){
 
 export function changeRole(id,user_id,role_id){
   return request({
-    url: '/user/changeRole',
+    url: '/sys/user/changeRole',
     method: 'get',
     params: { id,user_id,role_id }
   })
@@ -49,7 +49,7 @@ export function changeRole(id,user_id,role_id){
 
 export function getroleById(userid){
   return request({
-    url:'/user/getRoleById',
+    url:'/user/basic/getRoleById',
     method:'get',
     params: { userid }
   })

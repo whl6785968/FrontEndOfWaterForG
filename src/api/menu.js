@@ -3,14 +3,14 @@ import qs from 'qs'
 
 export function getRoles(){
   return request({
-    url: '/menu/getRoles',
+    url: '/sys/menu/getRoles',
     method: 'get'
   })
 }
 
 export function getAllMenuTree(activeNames){
   return request({
-    url: '/menu/getAllMenuTree/'+activeNames,
+    url: '/sys/menu/getAllMenuTree/'+activeNames,
     method: 'get'
   })
 }
@@ -19,7 +19,7 @@ export function updateRoleMenu(menuData){
   const { role_id,mids } = menuData
 //alert(role_id)
   return request({
-    url: '/menu/updateRoleMenu',
+    url: '/sys/menu/updateRoleMenu',
     method: 'post',
     params: {role_id:role_id,mids:mids},
     paramsSerializer: params => {

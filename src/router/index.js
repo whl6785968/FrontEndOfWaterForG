@@ -8,6 +8,7 @@ import checkData from '@/components/dataRelated/'
 import homepage from '@/components/homePage/'
 import menuConfig from '@/components/userManager/menuConfig/'
 import page404 from '@/components/404/'
+import dataDetils from '@/components/dataRelated/DataDeatils/'
 
 Vue.use(Router)
 
@@ -23,6 +24,10 @@ export const constantRoutes = [
         {
           path: '/homepage',
           component: homepage
+        },
+        {
+          path: '/dataDetails/:id',
+          component: dataDetils
         }
       ]
     },

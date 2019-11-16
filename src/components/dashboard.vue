@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard" style="position: relative;height: 100%;width: 100%;background-color: #f0f2f5;padding: 0;">
+  <div class="dashboard" style="position: relative;height: 100%;width: 100%;padding: 0;margin-bottom: 50px;">
       <el-row>
         <el-col>
           <el-aside :style="{width:ee+'px'}" ref="scrollBar">
@@ -62,7 +62,7 @@
                 <router-view v-if="isRouterAlive"></router-view>
               </transition>
             </el-main>
-            <el-footer style="background-color: #FFFFFF;">
+            <el-footer>
               <div style="line-height: 10px;">
                 <span><p><strong>版权所有:</strong>Sandalen</p></span>
                 <span><strong>github:</strong><a href="https://github.com/whl6785968">https://github.com/whl6785968</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><strong>blog:</strong>https://blog.csdn.net/qq_34661106</span>
@@ -167,9 +167,9 @@
     left: 200px;
     right: 0;
     background-color: #B3C0D1;
-    color: #333;
     text-align: center;
     line-height: 60px;
+    z-index: 999;
   }
   .el-aside{
     /*width: 200px !important;*/
@@ -192,9 +192,9 @@
   .el-main {
     /*position: fixed;
     top:60px;
-    right: 0;
-    left: 200px;
-    bottom: 60px;*/
+    right: 0;*/
+    left: -6px;
+    /*bottom: 60px;*/
     min-height: 100%;
     transition: margin-left .28s;
 /*    margin-left: 190px;*/
