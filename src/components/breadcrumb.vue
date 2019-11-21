@@ -23,4 +23,7 @@
 </script>
 
 <style>
+  .breadcrumb{
+    background-color: white;
+  }
 </style>

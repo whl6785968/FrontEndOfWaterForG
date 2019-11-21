@@ -1,4 +1,4 @@
-import { initMenu,getroleById } from '@/api/user'
+  import { initMenu,getroleById } from '@/api/user'
 import { constantRoutes } from '@/router'
 import page404 from '@/components/404/'
 
@@ -26,6 +26,7 @@ export const initmenu = (router,store,userId) => {
   initMenu(userId).then(response => {
     if (response){
       fmtRoutes = fmtRouters(response.obj)
+//    alert(JSON.stringify(fmtRoutes))
       store.commit('initMenu', fmtRoutes)
 //    resetRouter()
       router.matcher = new Router({mode:'hash'}).matcher
@@ -53,6 +54,7 @@ export const fmtRouters = (routes) => {
       iconcls,
       keepalive,
       requireauth,
+      enable,
       children
     } = router;
     
@@ -70,7 +72,15 @@ export const fmtRouters = (routes) => {
       cname = () => import('../components/dataRelated/')
     }
     else if(component.startsWith('menuConfig')){
+       
       cname = () => import('../components/userManager/menuConfig/')
+    }
+    else if(component.startsWith('data')){
+//    alert(1)
+      cname = () => import('../components/dataRelated/DataDeatils/')
+    }
+    else if(component.startsWith('map')){
+      cname = () => import('../components/dataRelated/map/')
     }
 //  alert(cname);
     let fmRouter = {
@@ -82,7 +92,8 @@ export const fmtRouters = (routes) => {
         title: title,
         iconCls: iconcls,
         keepAlive: keepalive,
-        requireAuth: requireauth
+        requireAuth: requireauth,
+        enable: enable
       }
     };   
     fmtRoutes.push(fmRouter)

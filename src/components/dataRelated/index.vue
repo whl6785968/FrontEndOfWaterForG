@@ -92,8 +92,7 @@
         </el-table-column>
         <el-table-column
       fixed="right"
-      label="操作"
-      width="100">
+      label="操作">
       <template slot-scope="scope">
         <el-button @click="handleClick(scope.row)" type="text" size="small">数据详情</el-button>
         <el-button type="text" size="small">编辑</el-button>
@@ -116,7 +115,8 @@
           equipModel: '',
           station: '',
           status: '',
-          level: ''
+          level: '',
+          isInit: false
         },
         equipModels: [],
         stations: [],
@@ -132,21 +132,25 @@
       getEquipAndStation() {
         this.$store.dispatch('datar/getEquipAndStation',this.formInline).then(response => {
           this.tableData = response
-          var equipModels = []
-          var stations = []
-          var statuss = []
-          var levels = []
-          response.forEach((item,index) => {
-            equipModels.push(item.model)
-            stations.push(item.station.name)
-            statuss.push(item.status)
-            levels.push(item.station.currlevel)
-          })
+          if(!this.isInit){
+            var equipModels = []
+            var stations = []
+            var statuss = []
+            var levels = []
+            response.forEach((item,index) => {
+              equipModels.push(item.model)
+              stations.push(item.station.name)
+              statuss.push(item.status)
+              levels.push(item.station.currlevel)
+            })
+            
+            this.equipModels = this.unique(equipModels)
+            this.stations = this.unique(stations)
+            this.statuss = this.unique(statuss)
+            this.levels = this.unique(levels)
+            this.isInit = true
+          }
           
-          this.equipModels = this.unique(equipModels)
-          this.stations = this.unique(stations)
-          this.statuss = this.unique(statuss)
-          this.levels = this.unique(levels)
 //        this.reload()
         })
       },
@@ -166,8 +170,7 @@
         return '';
       },
       handleClick(row){
-//      alert(JSON.stringify(row))
-        this.$router.push("/dataDetails/"+row.id)
+        this.$router.push("/dataRelated/equipList/dataDetails/"+row.id)
       }
     }
   }

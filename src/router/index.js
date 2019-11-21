@@ -3,12 +3,10 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import login from '@/components/login'
 import dashboard from '@/components/dashboard'
-import authControl from '@/components/userManager/authControl/index.vue'
-import checkData from '@/components/dataRelated/'
 import homepage from '@/components/homePage/'
-import menuConfig from '@/components/userManager/menuConfig/'
 import page404 from '@/components/404/'
-import dataDetils from '@/components/dataRelated/DataDeatils/'
+import map from '@/components/dataRelated/map/'
+
 
 Vue.use(Router)
 
@@ -26,8 +24,8 @@ export const constantRoutes = [
           component: homepage
         },
         {
-          path: '/dataDetails/:id',
-          component: dataDetils
+          path: '/map',
+          component: map
         }
       ]
     },

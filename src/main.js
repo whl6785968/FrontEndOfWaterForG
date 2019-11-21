@@ -12,6 +12,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import echarts from 'echarts'
 import { initmenu, getRoleById } from '@/utils/menuUtil'
+import $ from 'jquery'
+//import 'bootstrap4/dist/css/bootstrap.css'
+//import 'bootstrap4/dist/js/bootstrap.js'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 import moment from 'moment'
 Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
@@ -20,6 +26,12 @@ Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
 
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
+
+import BMap from 'vue-baidu-map'
+
+Vue.use(BMap,{
+  ak: 'uzs5G9t190lBpWmcohwIHFcgPKmdTnGb'
+})
 
 const whiteList = ['/login']
 var getRouter

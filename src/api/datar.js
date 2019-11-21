@@ -1,5 +1,4 @@
 import request from '@/utils/request'
-
 export function getEquipAndStation(data){
   return request({
     url: '/data/basic/getEquipAndStation',
@@ -9,10 +8,25 @@ export function getEquipAndStation(data){
 }
 
 export function searchDataOnCond(data){
-//alert(JSON.stringify(searchCondition))
   return request({
       url: '/data/basic/searchDataOnCond',
       method: 'post',
       data
+  })
+}
+
+export function getWaterData(eid){
+  return request({
+    url: '/data/basic/getWaterData',
+    method: 'get',
+    params: { eid }
+  })
+}
+
+export function getStationForMap(district,responsible,level){
+  return request({
+    url: '/data/basic/getAllInfoForStation',
+    method: 'get',
+    params: { district,responsible,level }
   })
 }
