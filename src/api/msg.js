@@ -10,23 +10,29 @@ export function deleteFile(path){
 
 export function posting(data){
   return request({
-    url: '/posting',
+    url: '/msg/basic/posting',
     method: 'post',
     data
   })
 }
 
-export function getUnReviewMsg(isReviewed){
+export function getUnReviewMsg(){
   return request({
-    url: '/getUnReviewMsg',
-    method: 'get',
-    params: { isReviewed }    
+    url: '/sys/msg/getUnReviewMsg',
+    method: 'get'   
+  })
+}
+
+export function getReadableMsg(){
+  return request({
+    url: '/msg/basic/getReadableMsg',
+    method: 'get'
   })
 }
 
 export function getUnReviewMsgDetail(postId){
   return request({
-    url: '/getUnReviewMsgDetail',
+    url: '/msg/basic/getMsgDetail',
     method: 'get',
     params: { postId }
     
@@ -35,7 +41,7 @@ export function getUnReviewMsgDetail(postId){
 
 export function passPost(postId){
   return request({
-    url: '/passPost',
+    url: '/sys/msg/passPost',
     method: 'get',
     params: { postId }
   })
@@ -43,7 +49,7 @@ export function passPost(postId){
 
 export function notPass(postId){
   return request({
-    url: '/notPass',
+    url: '/sys/msg/notPass',
     method: 'get',
     params:{ postId }
   })

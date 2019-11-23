@@ -21,8 +21,8 @@
       </div>
       <div class="content" ref="content">
         <p>{{postInfo.content}}</p>
-        <div style="height: 300px; cursor:zoom-in" v-for="(item,index) in imgLists" :key="index" id="imageDom">
-          <img :src="item" :id="item" width="80%" height="300px" :data-original="item" @click="enlarge(item)"/>
+        <div id="imgDom" @click="enlarge()" v-if="imgLists != '' && imgLists != null && imgLists.length != 0">
+          <img :src="item" :key="index"  v-for="(item,index) in imgLists" width="80%" height="300px"/>
         </div>     
       </div>
     </div>
@@ -57,22 +57,27 @@
     updated() {
       this.calcHeight()
     },
+    
     methods: {
       getUnReviewMsgDetail() {
         this.$store.dispatch('msg/getUnReviewMsgDetail', this.postId).then(response => {
+          const currRole = sessionStorage.getItem("role")
+          
+          if(currRole != 'ROLE_ADMIN' && response.obj.isreviewd == 0){
+            this.$message({
+              message: "权限不够",
+              type: 'error'
+            })
+            return
+          }
           this.postInfo = response.obj
-          if(imgLists !=  null){
-             const imgLists = this.postInfo.imglist.split(',')
+          const imgLists = this.postInfo.imglist.split(',')
+          if(imgLists != ''){
              for(let i = 0;i<imgLists.length;i++){
                imgLists[i] = '../../../../..'+imgLists[i]
              }
-          }
-         
-          
-//        alert(imgLists)
-          
+          }   
           this.imgLists = imgLists
-          //        alert(imgList)
         })
       },
       goBack() {
@@ -93,12 +98,8 @@
        this.$refs.content.style.height = (unifiedH + 100) +"px"
 //     alert(unifiedH)
       },
-      enlarge(item){
-//      const viewer = new Viewer(document.getElementById(item),{
-//        url: 'data-original'
-//      })
-
-        const viewDom = document.getElementById(item)
+      enlarge(){
+        const viewDom = document.getElementById('imgDom')
         this.viewer = new Viewer(viewDom,{
           initialViewIndex: 0,
           button: true, //右上角关闭按钮
@@ -112,7 +113,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .postDetail {
     width: 100%;
     background-color: #FFFFFF;
@@ -153,5 +154,10 @@
     float: right;
     background-color: #FFFFFF;
     padding: 20px;
+  }
+  
+  #imgDom{
+    /*height: 300px;*/ 
+    cursor:zoom-in;
   }
 </style>

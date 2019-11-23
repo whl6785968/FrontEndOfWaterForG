@@ -3,7 +3,8 @@
       <el-table
     :data="unReviewMsg"
     border
-    style="width: 100%">
+    style="width: 100%"
+    :show-overflow-tooltip='true'>
     <el-table-column
       fixed
       prop="posttime"
@@ -12,9 +13,9 @@
     </el-table-column>
      <el-table-column
       fixed
-      prop="id"
+      prop="postid"
       label="帖子编号"
-      width="80" align="center">
+      width="200" align="center">
     </el-table-column>
     <el-table-column
       prop="title"
@@ -67,17 +68,17 @@
     inject: ['reload'],
     methods: {
       getUnReviewMsg(){
-        const isReviewed = 0
-        this.$store.dispatch('msg/getUnReviewMsg',isReviewed).then(response => {
+        this.$store.dispatch('msg/getUnReviewMsg').then(response => {
           this.unReviewMsg = response.obj
         })
+        
+        
       },
       handleClick(row) {
-        this.$router.push("/postDetail/"+row.id)
+        this.$router.push("/msg/postDetail/"+row.postid)
       },
       pass(row){
-//      alert(row.id)
-        const postId = row.id
+        const postId = row.postid
         this.$store.dispatch('msg/passPost',postId).then(response => {
           this.$message({
             message: response.msg,
@@ -87,7 +88,7 @@
         })
       },
       notPass(row){
-        const postId = row.id
+        const postId = row.postid
         this.$store.dispatch('msg/notPass',postId).then(response => {
           this.$message({
             message: response.msg,

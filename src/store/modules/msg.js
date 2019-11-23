@@ -1,5 +1,5 @@
 import { MessageBox, Message } from 'element-ui'
-import { deleteFile,posting,getUnReviewMsg,getUnReviewMsgDetail,passPost,notPass } from '@/api/msg'
+import { deleteFile,posting,getUnReviewMsg,getUnReviewMsgDetail,passPost,notPass,getReadableMsg } from '@/api/msg'
 
 const state = {
   
@@ -48,9 +48,27 @@ const actions = {
       })
     })
   },
-  getUnReviewMsg( {commit },isReviewed){
+  getUnReviewMsg( {commit }){
     return new Promise((resolve,reject) => {
-      getUnReviewMsg(isReviewed).then(response => {
+      getUnReviewMsg().then(response => {
+        if(response.status == 200){
+          resolve(response)
+        }
+        else{
+          Message({
+              message: response.msg || 'Error',
+              type: 'error',
+            })
+          reject(new Error(response.msg || 'Error'))
+        }
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  getReadableMsg( {commit }){
+    return new Promise((resolve,reject) => {
+      getReadableMsg().then(response => {
         if(response.status == 200){
           resolve(response)
         }

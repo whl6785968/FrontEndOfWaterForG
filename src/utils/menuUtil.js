@@ -82,6 +82,18 @@ export const fmtRouters = (routes) => {
     else if(component.startsWith('map')){
       cname = () => import('../components/dataRelated/map/')
     }
+    else if(component.startsWith('posting')){
+      cname = () => import('../components/msg/posting/')
+    }
+    else if(component.startsWith('readable')){
+      cname = () => import('../components/msg/readablePost/')
+    }
+    else if(component.startsWith('review')){
+      cname = () => import('../components/msg/review/')
+    }
+    else if(component.startsWith('postDetail')){
+      cname = () => import('../components/msg/postDetail/')
+    }
 //  alert(cname);
     let fmRouter = {
       path: path,

@@ -21,6 +21,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 //import Viewer from 'viewerjs'
 //import 'viewerjs/dist/viewer.css'
 
+Vue.filter('ellipsis',function(str){
+  if(str.length > 20){
+    return str.substring(0,20) + "..."
+  }
+  return str
+})
+
 import moment from 'moment'
 Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
   return moment(dataStr).format(pattern)

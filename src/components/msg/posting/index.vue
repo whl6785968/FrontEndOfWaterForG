@@ -78,6 +78,7 @@
             })
             this.sizeForm.isEmergency = false
             this.sizeForm.uid = ''
+//          this.$router.push('/msg/readablePost')
           }
         })
       },
