@@ -1,5 +1,5 @@
 <template>
-  <div class="auth" style="width: 100%;height: 100%;">
+  <div class="auth">
     <el-table :data="tableData" style="width: 100%">
       <el-table-column label="id" width="180">
         <template slot-scope="scope">
@@ -24,8 +24,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
-    <el-dialog title="修改权限" :visible.sync="dialogFormVisible">
+    <el-dialog title="修改权限" :visible.sync="dialogFormVisible" :modal="false" style="margin-left: 170px;margin-top: 10px;">
       <el-form :model="form">
         <el-form-item label="ID" :label-width="formLabelWidth">
           <el-input v-model="form.id" autocomplete="off" disabled :placeholder="this.form.id" style="width: 200px;"></el-input>
@@ -46,6 +45,7 @@
         <el-button type="primary" @click="submitForm(form)">确 定</el-button>
       </div>
     </el-dialog>
+
   </div>
 </template>
 
@@ -62,7 +62,7 @@
           id: ''
         },
         formLabelWidth: '120px',
-        
+
       }
     },
     mounted() {
@@ -72,12 +72,11 @@
     methods: {
       handleEdit(index, row) {
         //      console.log(index, row)
+        this.dialogFormVisible = true
         const user_id = row.userId
         this.form.username = user_id
         this.form.id = row.id
-        
-        this.dialogFormVisible = true
-        
+
       },
       handleDelete(index, row) {
         console.log(index, row)
@@ -90,9 +89,9 @@
           }
         })
       },
-      submitForm(form){
-        this.$store.dispatch('user/changeRole',form).then(response => {
-          if(response == 200){
+      submitForm(form) {
+        this.$store.dispatch('user/changeRole', form).then(response => {
+          if(response == 200) {
             this.$message({
               message: '修改成功',
               type: 'success'
@@ -101,13 +100,12 @@
             this.reload()
           }
         })
-        
-        
+
       }
     }
   }
 </script>
 
 <style>
-
+  .auth {}
 </style>

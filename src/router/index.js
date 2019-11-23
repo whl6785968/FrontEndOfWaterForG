@@ -6,6 +6,9 @@ import dashboard from '@/components/dashboard'
 import homepage from '@/components/homePage/'
 import page404 from '@/components/404/'
 import map from '@/components/dataRelated/map/'
+import post from '@/components/msg/posting/'
+import review from '@/components/msg/review/'
+import postDetail from '@/components/msg/postDetail/'
 
 
 Vue.use(Router)
@@ -24,8 +27,16 @@ export const constantRoutes = [
           component: homepage
         },
         {
-          path: '/map',
-          component: map
+          path: '/post',
+          component: post
+        },
+        {
+          path: '/review',
+          component: review
+        },
+        {
+          path: '/postDetail/:id',
+          component: postDetail
         }
       ]
     },

@@ -24,7 +24,7 @@ const actions = {
         if(!data) {
                 reject('Verification failed, please Login again.')
         }
-        commit('SET_ID',data.userId)
+        commit('SET_ID',data.obj)
         resolve(data)
       }).catch(error => {
         reject(error)

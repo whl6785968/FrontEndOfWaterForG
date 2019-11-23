@@ -18,6 +18,8 @@ import $ from 'jquery'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+//import Viewer from 'viewerjs'
+//import 'viewerjs/dist/viewer.css'
 
 import moment from 'moment'
 Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {

@@ -32,8 +32,8 @@
           <div style="width: 100%;height: 35px;background-color: #409EFF;border-radius: 5px;text-align: center;line-height: 35px;">
             <font style="color: white;">查询结果:共{{mapDataLen}}条记录</font>
           </div>
-          <div class="mapResult" style="width: 100%;height:425px;overflow: auto;">
-            <div style="width: 100%;height: 70px;border-bottom:1px solid #BCBEC2;cursor: pointer;" class="resultDiv" v-for="(item,index) in mapData" :key="item.id" @click="panTo(item.longtitude,item.latitude,$event)">
+          <div class="mapResult">
+            <div class="resultDiv" v-for="(item,index) in mapData" :key="item.id" @click="panTo(item.longtitude,item.latitude,$event)">
               <div style="padding-left: 10px;padding-top: 5px;">
                 <font color="#1a8bff">{{item.name}}</font>
               </div>
@@ -239,5 +239,18 @@
   
   .activeDiv{
     background-color: #e8e8ff;
+  }
+  
+  .mapResult{
+    width: 100%;
+    height:425px;
+    overflow: auto;
+  }
+  
+  .resultDiv{
+    width: 100%;
+    height: 70px;
+    border-bottom:1px solid #BCBEC2;
+    cursor: pointer;
   }
 </style>

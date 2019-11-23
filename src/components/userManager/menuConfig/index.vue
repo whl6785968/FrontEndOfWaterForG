@@ -1,6 +1,6 @@
 <template>
-  <div class="menuConfig" style="height: 100%;width: 100%;">
-    <div class="menuConfigByRole" style="height: 500px;width:100%">
+  <div class="menuConfig">
+    <div class="menuConfigByRole" >
       <el-collapse accordion @change="collapseChange" v-model="activeColItem">
         <el-collapse-item v-for="(item,index) in roles" :key="index" :name="item.roleid">
           <template slot="title">
@@ -91,5 +91,15 @@
 </script>
 
 <style>
-
+  .menuConfig{
+    height: 100%;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 32px;
+  }
+  
+  .menuConfigByRole{
+    height: 500px;
+    width:100%
+  }
 </style>

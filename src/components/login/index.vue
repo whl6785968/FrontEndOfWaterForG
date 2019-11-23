@@ -65,6 +65,7 @@
           if(valid) {
             this.$store.dispatch('user/login', this.ruleForm).then(result => {
               if(result.token != null) {
+                this.$store.state.currUserId = this.ruleForm.username
                 this.$router.push("/")
                 this.$message({
                   message: '登陆成功',

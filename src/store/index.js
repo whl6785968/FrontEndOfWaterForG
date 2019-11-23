@@ -6,12 +6,14 @@ Vue.use(Vuex)
 import user from './modules/user'
 import menu from './modules/menu'
 import datar from './modules/datar'
+import msg from './modules/msg'
 
 const store = new Vuex.Store({
   state: {
     routes: [],
     routesLength: 0,
-    role: ''
+    role: '',
+    currUserId: ''
   },
   mutations: {
      initMenu(state, menus){
@@ -26,7 +28,8 @@ const store = new Vuex.Store({
   modules: {
     user,
     menu,
-    datar
+    datar,
+    msg
   }
 })
 
