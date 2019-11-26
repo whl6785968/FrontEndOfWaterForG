@@ -79,7 +79,15 @@
       },
       pass(row){
         const postId = row.postid
-        this.$store.dispatch('msg/passPost',postId).then(response => {
+        const uidOfpost = row.userinfo.uid
+        const userId = sessionStorage.getItem("username")
+        this.$store.dispatch('msg/passPost',{'postId':postId,'userId':uidOfpost}).then(response => {
+          this.$store.dispatch('msg/hasRead',{'postId':postId,'userId':userId}).then(response => {
+            this.$store.dispatch('msg/getUnReadMsgCountByUser').then(response => {
+              this.$store.state.msg.currCount = response
+            })
+          })
+          
           this.$message({
             message: response.msg,
             type: 'success'
@@ -90,10 +98,14 @@
       notPass(row){
         const postId = row.postid
         this.$store.dispatch('msg/notPass',postId).then(response => {
-          this.$message({
-            message: response.msg,
-            type: 'success'
+          this.$store.dispatch('msg/getUnReadMsgCountByUser').then(response => {
+            this.$store.state.msg.currCount = response
           })
+          
+          this.$message({
+              message: response.msg,
+              type: 'success'
+            })
           this.reload()
         })
       }

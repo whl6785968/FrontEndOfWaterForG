@@ -5,6 +5,7 @@ import login from '@/components/login'
 import dashboard from '@/components/dashboard'
 import homepage from '@/components/homePage/'
 import page404 from '@/components/404/'
+import dataManager from '@/components/dataManager/'
 
 Vue.use(Router)
 
@@ -20,6 +21,10 @@ export const constantRoutes = [
         {
           path: '/homepage',
           component: homepage
+        },
+        {
+          path: '/dataManager',
+          component: dataManager
         }
       ]
     },

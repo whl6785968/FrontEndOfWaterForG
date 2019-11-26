@@ -78,7 +78,14 @@
             })
             this.sizeForm.isEmergency = false
             this.sizeForm.uid = ''
-//          this.$router.push('/msg/readablePost')
+            this.$store.dispatch('msg/send')
+            const role = sessionStorage.getItem("role")
+            if(role == 'ROLE_ADMIN'){
+              this.$router.push('/msg/review')
+            }
+            else{
+              this.$router.push('/msg/readablePost')
+            } 
           }
         })
       },

@@ -7,6 +7,7 @@ import user from './modules/user'
 import menu from './modules/menu'
 import datar from './modules/datar'
 import msg from './modules/msg'
+import sysd from './modules/sysd'
 
 const store = new Vuex.Store({
   state: {
@@ -29,7 +30,8 @@ const store = new Vuex.Store({
     user,
     menu,
     datar,
-    msg
+    msg,
+    sysd
   }
 })
 

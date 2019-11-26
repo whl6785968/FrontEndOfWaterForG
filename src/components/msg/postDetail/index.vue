@@ -70,6 +70,13 @@
             })
             return
           }
+          const userId = sessionStorage.getItem("username")
+          this.$store.dispatch('msg/hasRead',{'postId':this.postId,'userId':userId}).then(response => {
+            this.$store.dispatch('msg/getUnReadMsgCountByUser').then(response => {
+             this.$store.state.msg.currCount = response
+           })
+          })
+          
           this.postInfo = response.obj
           const imgLists = this.postInfo.imglist.split(',')
           if(imgLists != ''){

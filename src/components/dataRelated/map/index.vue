@@ -133,10 +133,10 @@
               districts.push(response[i].district)
             }
 
-            this.responsible = this.unique(responsible)
-            this.districts = this.unique(districts)
+            this.responsible = this.realUnique(responsible)
+            this.districts = this.realUnique(districts)
             this.isInit = false
-
+            
           }
 
         })
@@ -150,7 +150,6 @@
         })
       },
       updateInfo() {
-        //      alert(111)
         let cards = this.$refs.card
         cards.forEach((item, index) => {
           this.infoWindow.push(item)
@@ -189,12 +188,31 @@
         map.addControl(new BMap.GeolocationControl());
         map.addControl(new BMap.OverviewMapControl());
         map.addControl(new BMap.MapTypeControl());
-        //      var marker = new BMap.Marker(point);
-        //      map.addOverlay(marker)
         window.map = map
       },
       unique(array) {
         return Array.from(new Set(array.sort()))
+      },
+      realUnique(array){
+        const newArray = []
+        if(array != null && array.length != 0){
+          newArray.push(array[0])
+          for(let i=1;i<array.length;i++){
+            let isDup = false
+            for(let j=0;j<newArray.length;j++){
+              if(array[i].name == newArray[j].name){
+                isDup = true
+                break
+              }
+            }
+            if(!isDup){
+              newArray.push(array[i])
+            }
+          }
+        }
+        
+        
+        return newArray
       },
       onSubmit() {
         this.initData()

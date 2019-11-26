@@ -9,6 +9,8 @@
       <div v-for="(item,index) in postList" :key="item.postid" class="post">
         <div class="userInfoArea">
           <div class="title" @click="getPostDetail(item.postid)">
+            <el-tag type="success" v-if="item.isRead == 1">已读</el-tag>
+            <el-tag type="warning" v-if="item.isRead == 0">未读</el-tag>
             {{item.title | ellipsis}}
           </div>
           <div class="author">
@@ -29,7 +31,7 @@
         <div class="operation" style="width: 100%;height: 50px;">
           <div style="float: right;">
             <el-button type="success" plain>收藏</el-button>
-            <el-button type="danger"  plain>删除</el-button>
+            <el-button type="danger" @click="deletePost(item.postid)"  plain>删除</el-button>
           </div>
         </div>
       </div>
@@ -47,12 +49,14 @@
         viewer: ''
       }
     },
+    inject: ['reload'],
     mounted() {
       this.getPostList()
     },
     methods: {
       getPostList() {
-        this.$store.dispatch('msg/getReadableMsg').then(response => {
+        const userId = sessionStorage.getItem("username")
+        this.$store.dispatch('msg/getReadableMsg',userId).then(response => {
           this.postList = response.obj 
         })
       },
@@ -69,6 +73,21 @@
           title: 0,
           toolbar: 1,
           keyboard: true,
+        })
+      },
+      deletePost(postId){
+        const userId = sessionStorage.getItem("username")
+        this.$store.dispatch('msg/deletePost',{'postId':postId,'userId':userId}).then(response => {
+           this.$store.dispatch('msg/getUnReadMsgCountByUser').then(response => {
+             this.$store.state.msg.currCount = response
+           })
+          if(response.status == 200){
+            this.$message({
+              message: '删除成功',
+              type: 'success'
+            })
+            this.reload()
+          }
         })
       },
       active(event){

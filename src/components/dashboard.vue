@@ -26,6 +26,9 @@
             <breadcrumb></breadcrumb>
           </div>
           <div class="avatar-container">
+            <el-badge :value="this.$store.state.msg.currCount" :max="99" class="item">
+              <i class="el-icon-message-solid" style="font-size: 22px;cursor: pointer;" @mouseover="hover($event)" @mouseleave="leave($event)" @click="pushIntoMsg"></i>
+            </el-badge>
             <el-dropdown>
               <img src="../../static/moon.png" class="user-avatar" />
               <el-dropdown-menu slot="dropdown">
@@ -80,7 +83,8 @@
         ee: 200,
         mContainer: 190,
         isRouterAlive: true,
-        isMenuAlive: true
+        isMenuAlive: true,
+        unReadMsgCount: 0
       }
     },
     provide() {
@@ -88,6 +92,12 @@
         reload: this.reload,
         reloadNevigate: this.reloadNevigate
       }
+    },
+    mounted(){
+      this.getUnReadMsgCountByUser()
+    },
+    destroyed(){
+      this.closeConnect()
     },
     methods: {
       collapse() {
@@ -116,15 +126,45 @@
         this.$nextTick(function() {
           this.isMenuAlive = true
         })
+      },
+      getUnReadMsgCountByUser(){
+        this.$store.dispatch('msg/getUnReadMsgCountByUser').then(response =>{
+          this.unReadMsgCount = response
+          this.$store.dispatch('msg/connect',response)
+        })
+      },
+      closeConnect(){
+        this.$store.dispatch('msg/closeConnect')
+      },
+      pushIntoMsg(){
+        this.$router.push('/msg/readablePost')
+      },
+      hover(event){
+        let infoBell = document.getElementsByClassName("el-icon-message-solid")
+        event.currentTarget.classList.add('activeDiv')
+      },
+      leave(event){
+        event.currentTarget.classList.remove('activeDiv')
       }
     },
     watch: {
-      routes: function(val) {
-      }
+      routes: function(val) {},
+      changeMsg: function(val){
+        if(val > this.$store.state.msg.currCount){
+          this.$notify.info({
+            title: '消息',
+            message: '您有一条新的消息'
+          });
+          this.$store.state.msg.currCount = val
+        }
+      }     
     },
     computed: {
       routes() {
         return this.$store.state.routes
+      },
+      changeMsg(){
+        return this.$store.state.msg.noticeCount
       }
     },
     components: {
@@ -229,5 +269,14 @@
     font-size: 14px;
     margin-left: 15px;
     margin-top: -8px;
+  }
+  
+  .item {
+    margin-top: 10px;
+    margin-right: 40px;
+  }
+  
+  .activeDiv{
+    color: cornflowerblue;
   }
 </style>
