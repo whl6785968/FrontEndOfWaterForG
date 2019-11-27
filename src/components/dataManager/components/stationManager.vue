@@ -8,7 +8,7 @@
 
     </div>
     <div class="block" style="float: right;">
-      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[5, 10, 15, 20]" :page-size="defalut_pageSize" layout="total, sizes, prev, pager, next, jumper" :total="totalPage">
       </el-pagination>
     </div>
     <el-table :data="tableData" border style="width: 100%">
@@ -84,16 +84,29 @@
         console.log(row);
       },
       initData() {
-        this.$store.dispatch('sysd/getAllStation').then(response => {
-          //          alert(JSON.stringify(response))
-          this.tableData = response.obj
+        const info = {page:this.currentPage,pageSize:this.defalut_pageSize}
+        this.$store.dispatch('sysd/getAllStation',info).then(response => {
+          this.tableData = response.obj.list
+          this.totalPage = response.obj.total
         })
       },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
+        this.pageSize = val
+        const info = {page:this.currentPage,pageSize:this.pageSize}
+        this.$store.dispatch('sysd/getAllStation',info).then(response => {
+          this.tableData = response.obj.list
+          this.totalPage = response.obj.total
+        })
       },
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
+        this.currentPage = val
+        const info = {page:this.currentPage,pageSize:this.pageSize}
+        this.$store.dispatch('sysd/getAllStation',info).then(response => {
+          this.tableData = response.obj.list
+          this.totalPage = response.obj.total
+        })
       },
       open() {
         this.$store.dispatch('sysd/getAllUser').then(response => {
@@ -123,10 +136,12 @@
     data() {
       return {
         tableData: [],
-        currentPage4: 4,
+        currentPage: 1,
+        defalut_pageSize:10,
         dialogFormVisible: false,
         districts: '',
         users: '',
+        totalPage: 0,
         form: {
           id: '',
           name: '',

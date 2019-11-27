@@ -23,7 +23,7 @@ export function getWaterData(eid){
   })
 }
 
-export function getStationForMap(district,responsible,level){
+export function getStationForMap(district,responsible,level,page,pageSize){
   return request({
     url: '/data/basic/getAllInfoForStation',
     method: 'get',

@@ -7,7 +7,9 @@
     <el-tab-pane label="区域管理">
       <districtManager></districtManager>
     </el-tab-pane>
-    <el-tab-pane label="设备管理">角色管理</el-tab-pane>
+    <el-tab-pane label="设备管理">
+      <equipManager></equipManager>
+    </el-tab-pane>
     <el-tab-pane label="数据管理">定时任务补偿</el-tab-pane>
   </el-tabs>
   </div>
@@ -16,6 +18,7 @@
 <script>
   import stationManager from './components/stationManager.vue'
   import districtManager from './components/districtManager.vue'
+  import equipManager from './components/equipManager.vue'
   export default {
     data(){
       return {
@@ -24,7 +27,8 @@
     },
     components:{
       'stationManager':stationManager,
-      'districtManager':districtManager
+      'districtManager':districtManager,
+      'equipManager':equipManager
     }
   }
 </script>
