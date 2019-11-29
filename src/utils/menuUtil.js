@@ -71,12 +71,10 @@ export const fmtRouters = (routes) => {
     else if(component.startsWith('check')){
       cname = () => import('../components/dataRelated/')
     }
-    else if(component.startsWith('menuConfig')){
-       
+    else if(component.startsWith('menuConfig')){   
       cname = () => import('../components/userManager/menuConfig/')
     }
-    else if(component.startsWith('data')){
-//    alert(1)
+    else if(component.startsWith('dataDetails')){
       cname = () => import('../components/dataRelated/DataDeatils/')
     }
     else if(component.startsWith('map')){
@@ -93,6 +91,12 @@ export const fmtRouters = (routes) => {
     }
     else if(component.startsWith('postDetail')){
       cname = () => import('../components/msg/postDetail/')
+    }
+    else if(component.startsWith('reportList')){
+      cname = () => import('@/components/report/reportList/')
+    }
+    else if(component.startsWith("reportDetails")){
+      cname = () => import('@/components/report/')
     }
 //  alert(cname);
     let fmRouter = {

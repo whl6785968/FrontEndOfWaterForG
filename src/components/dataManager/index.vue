@@ -1,5 +1,5 @@
 <template>
-  <div class="dataManager" style="width: 100%;height: 100%;background-color: #FFFFFF;padding: 32px;">
+  <div class="dataManager" style="width: 100%;background-color: #FFFFFF;padding: 32px;">
     <el-tabs tab-position="left" style="height: 100%;">
     <el-tab-pane label="站点管理">
       <stationManager></stationManager>

@@ -5,7 +5,7 @@
 
     </div>
     <div class="block" style="float: right;">
-      <el-pagination  :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
+      <el-pagination  :current-page="currentPage" :page-sizes="[5, 10, 15, 20]" :page-size="5" layout="total, sizes, prev, pager, next, jumper" :total="100">
       </el-pagination>
     </div>
      <el-table :data="tableData" border style="width: 100%">
@@ -80,7 +80,7 @@
       return {
         tableData: [],
         dialogFormVisible: false,
-        currentPage4: 4,
+        currentPage: 4,
         form: {
           id: '',
           name: '',
@@ -105,8 +105,9 @@
         })
       },
       getStation(){
-        this.$store.dispatch('sysd/getAllStation').then(response => {
-          this.stations = response.obj
+        const info = {page: 1,pageSize: 1000}
+        this.$store.dispatch('sysd/getAllStation',info).then(response => {
+          this.stations = response.obj.list
         })
       },
       add(){
@@ -117,6 +118,7 @@
             type: 'success'
           })
           this.reload()
+          this.dialogFormVisible = false
         })
       }
     }
