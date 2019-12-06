@@ -9,6 +9,7 @@ import datar from './modules/datar'
 import msg from './modules/msg'
 import sysd from './modules/sysd'
 import report from './modules/report'
+import algo from './modules/algo'
 
 const store = new Vuex.Store({
   state: {
@@ -33,7 +34,8 @@ const store = new Vuex.Store({
     datar,
     msg,
     sysd,
-    report
+    report,
+    algo
   }
 })
 
