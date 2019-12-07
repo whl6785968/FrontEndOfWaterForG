@@ -6,7 +6,6 @@ import dashboard from '@/components/dashboard'
 import homepage from '@/components/homePage/'
 import page404 from '@/components/404/'
 import dataManager from '@/components/dataManager/'
-import algo from '@/components/algo/'
 
 Vue.use(Router)
 
@@ -26,11 +25,11 @@ export const constantRoutes = [
         {
           path: '/dataManager',
           component: dataManager
-        },
-        {
-          path: '/algo',
-          component: algo
         }
+//      {
+//        path: '/algo',
+//        component: algo
+//      }
       ]
     },
     {

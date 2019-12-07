@@ -98,6 +98,9 @@ export const fmtRouters = (routes) => {
     else if(component.startsWith("reportDetails")){
       cname = () => import('@/components/report/')
     }
+    else if(component.startsWith("isoForest")){
+      cname = () => import('@/components/algo/isoForest/')
+    }
 //  alert(cname);
     let fmRouter = {
       path: path,
