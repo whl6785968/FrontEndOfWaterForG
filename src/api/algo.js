@@ -21,3 +21,17 @@ export function isError(data){
     data
   })
 }
+
+export function tst(){
+  return request({
+    url: '/algo/basic/tst',
+    method: 'get'
+  })
+}
+
+export function getErrRecord(){
+  return request({
+    url: '/algo/basic/getErrRecord',
+    method: 'get'
+  })
+}

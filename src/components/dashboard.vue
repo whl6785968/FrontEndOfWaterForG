@@ -32,7 +32,7 @@
             <el-dropdown>
               <img src="../../static/moon.png" class="user-avatar" />
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>黄金糕</el-dropdown-item>
+                <el-dropdown-item><router-link to="/userinfo">个人中心</router-link></el-dropdown-item>
                 <el-dropdown-item>狮子头</el-dropdown-item>
                 <el-dropdown-item>螺蛳粉</el-dropdown-item>
                 <el-dropdown-item disabled>双皮奶</el-dropdown-item>

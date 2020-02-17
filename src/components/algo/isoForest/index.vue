@@ -1,6 +1,5 @@
 <template>
   <div class="algo">
-    
     <div class="predict" style="margin-bottom: 20px;">
       <div class="predict_title" style="margin-bottom: 20px;">
         <div class="alert alert-info" role="alert">  

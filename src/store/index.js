@@ -10,6 +10,7 @@ import msg from './modules/msg'
 import sysd from './modules/sysd'
 import report from './modules/report'
 import algo from './modules/algo'
+import  kg from './modules/kg'
 
 const store = new Vuex.Store({
   state: {
@@ -35,7 +36,8 @@ const store = new Vuex.Store({
     msg,
     sysd,
     report,
-    algo
+    algo,
+    kg
   }
 })
 

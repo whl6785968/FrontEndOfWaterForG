@@ -1,4 +1,4 @@
-import { errCheck,trainIsoForest,isError } from '@/api/algo'
+import { errCheck,trainIsoForest,isError,tst,getErrRecord } from '@/api/algo'
 
 const state = {
   
@@ -37,6 +37,28 @@ const actions = {
       isError({ph:ph,disslove:disslove,nh:nh,kmno:kmno,totalp:totalp}).then(response => {
         if(response.status == 200){
           resolve(response)
+        }
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  tst({ commit }){
+    return new Promise((resolve,reject) => {
+      tst().then(response => {
+        if(response.status == 200){
+          resolve(response)
+        }
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  getErrRecord({ commit }){
+    return new Promise((resolve,reject) => {
+      getErrRecord().then(response => {
+        if(response.status == 200){
+          resolve(response.obj)
         }
       }).catch(error => {
         reject(error)

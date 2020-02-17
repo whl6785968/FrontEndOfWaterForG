@@ -86,10 +86,14 @@
         </el-table-column>
         <el-table-column label="所属站点名称" prop="station.name" width="200" align="center">
         </el-table-column>
-        <el-table-column label="设备状态" prop="status" width="200" align="center">
+        <el-table-column label="设备状态" prop="status" width="100" align="center">
         </el-table-column>
-        <el-table-column label="所属站点当前水质等级" prop="station.currlevel" width="200" align="center">
-        </el-table-column>
+        <el-table-column label="所属站点当前水质等级" prop="station.currlevel" width="100" align="center">
+        </el-table-column>      
+         <el-table-column label="下游站点" prop="station.downstreamId" width="150" align="center">
+        </el-table-column>  
+         <el-table-column label="上游站点" prop="station.upstreamId" width="150" align="center">
+        </el-table-column>  
         <el-table-column
       fixed="right"
       label="操作">

@@ -1,5 +1,5 @@
 import { getToken, setToken, removeToken } from '@/utils/auth'
-import { getUser,login,getUserRole,getRoleByUserId,changeRole } from '@/api/user'
+import { getUser,login,getUserRole,getRoleByUserId,changeRole,getUserInfo,updateUserInfo,updatePassword } from '@/api/user'
 import { MessageBox, Message } from 'element-ui'
 
 const state = {
@@ -111,6 +111,47 @@ const actions = {
           reject(error)
         })
     })
+  },
+  getUserInfo({commit},userid){
+    return new Promise((resolve,reject) => {
+      getUserInfo(userid).then(response => {
+        if(response.status == 200){
+          resolve(response)
+        }
+        else{
+          Message({
+            message: resoonse.msg,
+            type: 'error'
+          })
+          reject(new Error(response.msg))
+        }
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  updateUserInfo({commit},info){
+    const link = info.link
+    const descr = info.descr
+    const userid = info.userid
+    return new Promise((resolve,reject) => {
+      updateUserInfo(link,descr,userid).then(response => {
+        resolve(response)
+      }).catch(error => {
+        reject(error)
+      })
+    }) 
+  },
+  updatePassword({commit},info){
+    const userid = info.userid
+    const pass = info.password
+    return new Promise((resolve,reject) => {
+      updatePassword(userid,pass).then(response => {
+        resolve(response)
+      }).catch(error => {
+        reject(error)
+      })
+    }) 
   }
 }
 

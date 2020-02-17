@@ -54,3 +54,27 @@ export function getroleById(userid){
     params: { userid }
   })
 }
+
+export function getUserInfo(userid){
+  return request({
+    url: '/user/basic/getUserInfo',
+    method: 'get',
+    params: { userid }
+  })
+}
+
+export function updateUserInfo(link,descr,userid){
+  return request({
+    url: '/user/basic/updateUserInfo',
+    method: 'post',
+    params: { link,descr,userid }
+  })
+}
+
+export function updatePassword(userid,pass){
+  return request({
+    url: '/user/basic/updatePassword',
+    method: 'post',
+    params: {userid,pass}
+  })
+}
