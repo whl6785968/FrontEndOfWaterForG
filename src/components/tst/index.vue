@@ -16,9 +16,10 @@
     },
     methods: {
       tst(){
-        this.$store.dispatch('algo/tst').then(response => {
+        this.$store.dispatch('kg/tstPython').then(response => {
           
         })
+
       }
     }
     

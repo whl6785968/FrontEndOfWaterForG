@@ -22,8 +22,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 //import 'viewerjs/dist/viewer.css'
 
 Vue.filter('ellipsis',function(str){
-  if(str.length > 20){
-    return str.substring(0,20) + "..."
+  if(str.length > 10){
+    return str.substring(0,10) + "..."
   }
   return str
 })

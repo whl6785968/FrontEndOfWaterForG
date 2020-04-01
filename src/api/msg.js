@@ -40,6 +40,22 @@ export function getUnReviewMsgDetail(postId){
   })
 }
 
+export function getReply(post_id){
+  return request({
+    url: '/msg/basic/getReply',
+    method: 'get',
+    params: { post_id }
+  })
+}
+
+export function reply(post_id,user_id,content){
+  return request({
+    url: '/msg/basic/reply',
+    method: 'post',
+    params: { post_id,user_id,content }
+  })
+}
+
 export function passPost(postId,userId){
   return request({
     url: '/sys/msg/passPost',

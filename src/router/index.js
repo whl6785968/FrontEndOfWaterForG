@@ -5,11 +5,12 @@ import login from '@/components/login'
 import dashboard from '@/components/dashboard'
 import homepage from '@/components/homePage/'
 import page404 from '@/components/404/'
-import dataManager from '@/components/dataManager/'
-import kg from '@/components/kg/'
 import userinfo from '@/components/user/'
 import tst from '@/components/tst/'
-import errRecord from '@/components/algo/errRecord/'
+import kgManager from '@/components/kg/kgManager/'
+import ner from '@/components/kg/ner/'
+import klm from '@/components/kg/knowledgeManager/'
+
 
 Vue.use(Router)
 
@@ -27,14 +28,6 @@ export const constantRoutes = [
           component: homepage
         },
         {
-          path: '/dataManager',
-          component: dataManager
-        },
-        {
-          path: '/kg',
-          component: kg
-        },
-        {
           path: '/userinfo',
           component: userinfo
         },
@@ -43,9 +36,18 @@ export const constantRoutes = [
           component: tst
         },
         {
-          path: '/errRecord',
-          component: errRecord
+          path: '/kgManager',
+          component: kgManager
+        },
+        {
+          path: '/ner',
+          component: ner
+        },
+        {
+          path: 'klm',
+          component: klm
         }
+
         
 //      {
 //        path: '/algo',

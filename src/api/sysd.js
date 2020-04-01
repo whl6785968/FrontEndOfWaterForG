@@ -16,10 +16,11 @@ export function getAllUser(){
   })
 }
 
-export function getAllDistrict(){
+export function getAllDistrict(page,pageSize){
   return request({
     url: '/sys/data/getAllDistrict',
-    method: 'get'
+    method: 'get',
+    params: { page,pageSize }
   })
 }
 
@@ -31,6 +32,22 @@ export function addStation(data){
   })
 }
 
+export function modifyStation(data){
+  return request({
+    url: '/sys/data/modifyStation',
+    method: 'post',
+    data
+  })
+}
+
+export function deleteStation(stationId){
+  alert(stationId)
+  return request({
+    url: '/sys/data/deleteStation',
+    method: 'delete',
+    params: { stationId }
+  })
+}
 export function addDistrict(data){
   return request({
     url: '/sys/data/addDistrict',
@@ -39,16 +56,42 @@ export function addDistrict(data){
   })
 }
 
-export function getAllEquip(){
+export function modifyDistrict(data){
+  return request({
+    url: '/sys/data/modifyDistrict',
+    method: 'post',
+    data
+  })
+}
+
+export function deleteDistrict(id){
+  return request({
+    url: '/sys/data/deleteDistrict',
+    method: 'delete',
+    params: { id }
+  })
+}
+
+export function getAllEquip(page,pageSize){
   return request({
     url: '/sys/data/getAllEquip',
-    method: 'get'
+    method: 'get',
+    params: { page,pageSize }
   })
 }
 
 export function addEquip(data){
   return request({
     url: '/sys/data/addEquip',
+    method: 'post',
+    data
+  })
+}
+
+export function modifyEquip(data){
+//alert(data.id)
+  return request({
+    url: '/sys/data/modifyEquip',
     method: 'post',
     data
   })

@@ -101,6 +101,21 @@ export const fmtRouters = (routes) => {
     else if(component.startsWith("isoForest")){
       cname = () => import('@/components/algo/isoForest/')
     }
+    else if(component.startsWith('stationManager')){
+      cname = () => import('@/components/dataManager/components/stationManager')
+    }
+    else if(component.startsWith('districtManager')){
+      cname = () => import('@/components/dataManager/components/districtManager.vue')
+    }
+    else if(component.startsWith('equipManager')){
+      cname = () => import('@/components/dataManager/components/equipManager')
+    }
+    else if(component.startsWith('errRecord')){
+      cname = () => import('@/components/algo/errRecord/')
+    }
+    else if(component.startsWith('showKg')){
+      cname = () => import('@/components/kg/')
+    }
 //  alert(cname);
     let fmRouter = {
       path: path,

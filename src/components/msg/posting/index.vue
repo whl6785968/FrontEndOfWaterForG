@@ -1,6 +1,7 @@
 <template>
   <div class="post">
-    <el-form ref="form" :model="sizeForm" label-width="80px" size="mini">
+    <div class="post_2" style="width: 500px;margin-left: 400px;">
+      <el-form ref="form" :model="sizeForm" label-width="80px" size="medium">
       <el-form-item label="标题">
         <el-input v-model="sizeForm.name"></el-input>
       </el-form-item>
@@ -28,7 +29,7 @@
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog>
       </el-form-item>
-      <el-form-item label="活动形式">
+      <el-form-item label="详细信息">
         <el-input type="textarea" v-model="sizeForm.content" size="medium"></el-input>
       </el-form-item>
       <el-form-item size="large">
@@ -36,6 +37,7 @@
         <el-button>取消</el-button>
       </el-form-item>
     </el-form>
+    </div>
   </div>
 </template>
 

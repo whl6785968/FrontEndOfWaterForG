@@ -242,7 +242,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .box-card {
     height: 98px;
     cursor: pointer;

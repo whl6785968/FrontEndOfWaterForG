@@ -1,5 +1,5 @@
 import { MessageBox, Message,notify } from 'element-ui'
-import { deleteFile,posting,getUnReviewMsg,getUnReviewMsgDetail,passPost,notPass,getReadableMsg,getUnReadMsgCountByUser,hasRead,deletePost } from '@/api/msg'
+import { deleteFile,posting,getUnReviewMsg,getUnReviewMsgDetail,passPost,notPass,getReadableMsg,getUnReadMsgCountByUser,hasRead,deletePost,reply,getReply } from '@/api/msg'
 
 import Stomp from 'stompjs'
 import SockJS from 'sockjs-client'
@@ -199,6 +199,35 @@ const actions = {
     const { postId,userId } = info
     return new Promise((resolve,reject) => {
       deletePost(postId,userId).then(response => {
+        if(response.status == 200){
+          resolve(response)
+        }
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  reply({ commit },info){
+    const { post_id,user_id,content } = info
+    return new Promise((resolve,reject) => {
+      reply(post_id,user_id,content).then(response => {
+        if(response.status == 200){
+          resolve(response)
+        }
+        else{
+          Message({
+              message: response.msg || 'Error',
+              type: 'error',
+          })
+        }
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  getReply({ commit },post_id){
+    return new Promise((resolve,reject) => {
+      getReply(post_id).then(response => {
         if(response.status == 200){
           resolve(response)
         }

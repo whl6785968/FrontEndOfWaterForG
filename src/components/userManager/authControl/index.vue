@@ -107,5 +107,8 @@
 </script>
 
 <style>
-  .auth {}
+  .auth {
+    background-color: #FFFFFF;
+    padding: 32px;
+  }
 </style>
