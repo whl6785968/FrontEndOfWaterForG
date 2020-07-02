@@ -1,5 +1,5 @@
 # 水质监控系统前端部分
-该项目为水质监控系统的前端部分，具备以下功能:
+该项目为基于vue、echarts、elementUi所开发的水质监控系统的前端部分，目前具备以下功能:
 ## 1.首页
 ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/index.png)
 ## 2.权限控制
