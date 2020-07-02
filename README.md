@@ -5,10 +5,10 @@
 ## 2.权限控制
 ### 2.1 角色控制
     分配不同用户不同角色，实现权限的基本控制
-    ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/authControl.png)
+![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/authControl.png)
 ### 2.2 菜单配置 
     对不同角色分配不同菜单项，基于动态路由的方式动态展示用户能操作的菜单项
-    ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/menuConfig.png)
+![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/menuConfig.png)
 ## 3.数据展示
 ### 3.1 设备查询
     ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/waterData0.png)
