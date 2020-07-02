@@ -34,7 +34,7 @@
 ### 6.1 基于孤立森林的水质预测和监控页面
 ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/isoForest.png)
 ### 6.2 异常记录
-![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/errRecord.png)
+![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/errorRecord.png)
 ## 7.其他管理
 ### 7.1 站点管理
 ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/stationMa.png)
