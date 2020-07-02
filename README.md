@@ -6,9 +6,13 @@
 ### 2.1 角色控制
     分配不同用户不同角色，实现权限的基本控制
 ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/authControl.png)
+![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/authControl2.png)
 ### 2.2 菜单配置 
-    对不同角色分配不同菜单项，基于动态路由的方式动态展示用户能操作的菜单项,此处是用的ADMIN权限用户查看CLIENT权限
+    对不同角色分配不同菜单项，基于动态路由的方式动态展示用户能操作的菜单项,下面展示了当角色为ADMIN和CLIENT所展示不同的菜单项，目前前端通过vue指令实现了按钮级别的权限控制，后端通过spring security实现了URL级别的权限控制
+**[ADMIN]**
 ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/menuConfig.png)
+**[CLIENT]**
+![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/authControl3.png)
 ## 3.数据展示
 ### 3.1 设备查询
 ![image](https://github.com/whl6785968/FrontEndOfWaterForG/blob/master/waterPic/waterData0.png)
